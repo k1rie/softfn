@@ -18,10 +18,61 @@ const timerresolutioncardtext = document.querySelector("#timerresolutioncardtext
 
 const slideritem = document.querySelectorAll(".slider__item")
 
-localStorage.setItem("darkmode",true)
+const darkmode = document.querySelector(".mode__dark")
 
-localStorage.setItem("lightmode",false)
+const lightmode = document.querySelector(".mode__light")
 
+if (localStorage.getItem("darkmode") === "true"){
+    document.querySelector(".main").style.backgroundColor = "black"
+    slideritem.forEach((item)=>{
+item.style.backgroundColor = "#242424"
+document.querySelectorAll(".slider__img").forEach((item)=>{
+    item.style.opacity = "0.2"
+})
+darkmode.style.transform = "translateX(0)"
+lightmode.style.transform = "translateX(-100%)"
+    })
+
+    document.querySelectorAll(".slider__title").forEach((item)=>{
+        item.style.color = "white"
+    })
+
+    document.querySelectorAll(".slider__desc").forEach((item)=>{
+        item.style.color = "white"
+    })
+
+    document.querySelectorAll(".card").forEach((item)=>{
+        item.style.backgroundColor = "#242424"
+    })
+
+    document.querySelector("body").style.backgroundColor = "black"  
+}
+
+if (localStorage.getItem("lightmode") === "true"){
+    document.querySelector(".main").style.backgroundColor = "white"
+    slideritem.forEach((item)=>{
+item.style.backgroundColor = "white"
+document.querySelectorAll(".slider__img").forEach((item)=>{
+    item.style.opacity = "1"
+})
+darkmode.style.transform = "translateX(-100%)"
+lightmode.style.transform = "translateX(0)"
+    })
+
+    document.querySelectorAll(".slider__title").forEach((item)=>{
+        item.style.color = "black"
+    })
+
+    document.querySelectorAll(".slider__desc").forEach((item)=>{
+        item.style.color = "black"
+    })
+
+    document.querySelectorAll(".card").forEach((item)=>{
+        item.style.backgroundColor = "gray"
+    })
+
+    document.querySelector("body").style.backgroundColor = "white"
+}
 
 
 var focus = false
@@ -139,12 +190,10 @@ slidercont.style.transform = `translateY(0)`
 }
 },4000)
 
-const darkmode = document.querySelector(".mode__dark")
-
-const lightmode = document.querySelector(".mode__light")
 
 darkmode.addEventListener("click",()=>{
-if(localStorage.getItem("darkmode") === "true"){
+    localStorage.setItem("lightmode",true)
+if(localStorage.getItem("lightmode") === "true"){
     document.querySelector(".main").style.backgroundColor = "white"
     slideritem.forEach((item)=>{
 item.style.backgroundColor = "white"
@@ -166,13 +215,14 @@ lightmode.style.transform = "translateX(0)"
     document.querySelectorAll(".card").forEach((item)=>{
         item.style.backgroundColor = "gray"
     })
-    localStorage.setItem("darkmode",false)
-    localStorage.setItem("lightmode",true)
+
     document.querySelector("body").style.backgroundColor = "white"
+    localStorage.setItem("darkmode",false)
 }
 })
 
 lightmode.addEventListener("click",()=>{
+    localStorage.setItem("darkmode",true)
    if(localStorage.getItem("lightmode") === "true"){
     document.querySelector(".main").style.backgroundColor = "black"
     slideritem.forEach((item)=>{
@@ -195,9 +245,9 @@ lightmode.style.transform = "translateX(-100%)"
     document.querySelectorAll(".card").forEach((item)=>{
         item.style.backgroundColor = "#242424"
     })
-    localStorage.setItem("darkmode",true)
-    localStorage.setItem("lightmode",false)
+
     document.querySelector("body").style.backgroundColor = "black"  
+    localStorage.setItem("lightmode",false)
  }
 })
 
