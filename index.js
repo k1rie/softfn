@@ -168,6 +168,7 @@ lightmode.style.transform = "translateX(0)"
     })
     localStorage.setItem("darkmode",false)
     localStorage.setItem("lightmode",true)
+    document.querySelector("body").style.backgroundColor = "white"
 }
 })
 
@@ -196,5 +197,8 @@ lightmode.style.transform = "translateX(-100%)"
     })
     localStorage.setItem("darkmode",true)
     localStorage.setItem("lightmode",false)
-   }
+    document.querySelector("body").style.backgroundColor = "black"  
+ }
 })
+
+
